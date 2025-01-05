@@ -1,7 +1,7 @@
 const directions = [-1, 1];
 
 class Spider {
-    constructor(x, y, w, h) {
+    constructor(x, y, w, h, colorOfBox) {
         this.position = {
             x: x || 0,
             y: y || 0
@@ -16,11 +16,11 @@ class Spider {
             x: directions[Math.floor(Math.random() * 2)],
             y: directions[Math.floor(Math.random() * 2)],
         };
-
-        this.colorArr = ['red', 'blue', 'green'];
+        this.color = colorOfBox
     };
 
     draw(ctx) {
+        ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.rect(this.position.x, this.position.y, this.size.width, this.size.height);
         ctx.fill();
