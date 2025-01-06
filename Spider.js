@@ -16,19 +16,27 @@ class Spider {
             x: directions[Math.floor(Math.random() * 2)],
             y: directions[Math.floor(Math.random() * 2)],
         };
-        this.color = colorOfBox
+
+        this.color = colorOfBox;
+
+        this.speed = Math.random() * (3 - 0.5) + 0.5; // (Max + Min) + Min
+
+        this.image = new Image();
+        this.image.src = 'https://pngimg.com/d/spider_PNG41.png';
+
     };
 
     draw(ctx) {
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        ctx.rect(this.position.x, this.position.y, this.size.width, this.size.height);
+        // ctx.rect(this.position.x, this.position.y, this.size.width, this.size.height);
+        ctx.drawImage(this.image, this.position.x, this.position.y, this.size.width, this.size.height);
         ctx.fill();
     };
 
     move() {
-        this.position.x = this.position.x + this.direction.x;
-        this.position.y = this.position.y + this.direction.y;
+        this.position.x = this.position.x + this.direction.x * this.speed;
+        this.position.y = this.position.y + this.direction.y * this.speed;
     };
 
     update(ctx) {
