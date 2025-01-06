@@ -23,7 +23,6 @@ class Spider {
 
         this.image = new Image();
         this.image.src = 'https://pngimg.com/d/spider_PNG41.png';
-
     };
 
     draw(ctx) {
@@ -39,10 +38,15 @@ class Spider {
         this.position.y = this.position.y + this.direction.y * this.speed;
     };
 
-    update(ctx) {
+    update(ctx, mousePositions) {
         this.draw(ctx);
         this.move();
         this.checkBorderCollision();
+        this.checkIsSpiderBeingClicked(mousePositions)
+    };
+
+    checkIsSpiderBeingClicked(mousePositions) {
+        console.log(mousePositions)
     };
 
     checkBorderCollision() {
