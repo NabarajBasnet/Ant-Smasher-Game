@@ -40,13 +40,34 @@ class Spider {
 
     update(ctx, mousePositions) {
         this.draw(ctx);
-        this.move();
+        // this.move();
         this.checkBorderCollision();
         this.checkIsSpiderBeingClicked(mousePositions)
     };
 
     checkIsSpiderBeingClicked(mousePositions) {
-        console.log(mousePositions)
+        const spiderDim = {
+            sTop: this.position.y,
+            sRight: this.position.x + this.size.width,
+            sLeft: this.position.x,
+            sBottom: this.position.y + this.size.height,
+        };
+
+        const cursorDim = {
+            mTop: mousePositions.y,
+            mBottom: mousePositions.y + 45,
+            mRight: mousePositions.x + 45,
+            mLeft: mousePositions.x
+        };
+
+        // Checks 
+        const isSpiderClicked =
+            cursorDim.mRight > spiderDim.sLeft &&
+            cursorDim.mBottom > spiderDim.sTop &&
+            cursorDim.mLeft < spiderDim.sRight &&
+            cursorDim.mTop < spiderDim.sBottom
+
+        console.log(isSpiderClicked);
     };
 
     checkBorderCollision() {

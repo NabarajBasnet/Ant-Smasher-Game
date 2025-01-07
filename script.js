@@ -8,8 +8,7 @@ image.src = 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic
 
 const colorArr = ['red', 'blue', 'green'];
 let mousePositions = { x: 0, y: 0 }
-
-const spiders = Array.from({ length: 4 }, () => {
+const spiders = Array.from({ length: 1 }, () => {
 
     const colorOfBox = colorArr[Math.floor(Math.random() * colorArr.length)];
     const size = Math.random() * (20 - 10) + 10;
@@ -27,10 +26,10 @@ const gameLoop = (timestamp) => {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-    ctx.rect(mousePositions.x, mousePositions.y, 15, 15)
+    ctx.rect(mousePositions.x, mousePositions.y, 45, 45)
     ctx.fill()
     spiders.forEach((spider) => {
-        spider.update(ctx,mousePositions);
+        spider.update(ctx, mousePositions);
     });
     requestAnimationFrame(gameLoop);
 }
