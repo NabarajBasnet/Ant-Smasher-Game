@@ -21,6 +21,8 @@ class Spider {
 
         this.speed = Math.random() * (3 - 0.5) + 0.5; // (Max + Min) + Min
 
+        this.isSpiderDead = false;
+
         this.image = new Image();
         this.image.src = 'https://pngimg.com/d/spider_PNG41.png';
     };
@@ -28,19 +30,23 @@ class Spider {
     draw(ctx) {
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        // ctx.rect(this.position.x, this.position.y, this.size.width, this.size.height);
         ctx.drawImage(this.image, this.position.x, this.position.y, this.size.width, this.size.height);
         ctx.fill();
     };
 
     move() {
+        if (this.isSpiderDead) {
+            return;
+        };
+
         this.position.x = this.position.x + this.direction.x * this.speed;
         this.position.y = this.position.y + this.direction.y * this.speed;
     };
 
+
     update(ctx, mousePositions) {
         this.draw(ctx);
-        // this.move();
+        this.move();
         this.checkBorderCollision();
         this.checkIsSpiderBeingClicked(mousePositions)
     };
@@ -65,9 +71,11 @@ class Spider {
             cursorDim.mRight > spiderDim.sLeft &&
             cursorDim.mBottom > spiderDim.sTop &&
             cursorDim.mLeft < spiderDim.sRight &&
-            cursorDim.mTop < spiderDim.sBottom
+            cursorDim.mTop < spiderDim.sBottom;
 
-        console.log(isSpiderClicked);
+        if (isSpiderClicked) {
+            this.isSpiderDead = true;
+        };
     };
 
     checkBorderCollision() {
