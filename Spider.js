@@ -20,7 +20,7 @@ class Spider {
         this.isSpiderDead = false;
 
         this.image = new Image();
-        this.image.src = 'https://pngimg.com/d/spider_PNG41.png';
+        this.image.src = './media/spider.png';
     };
 
     draw(ctx) {

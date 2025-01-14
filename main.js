@@ -1,4 +1,4 @@
-import Spider from "./Spider.js";
+import Spider from "./spider.js";
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
