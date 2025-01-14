@@ -46,5 +46,4 @@ Contributions, issues, and suggestions are welcome! Feel free to fork this repos
 
 📷 Screenshots
 
-![Gameplay Screenshot]('../Ant Smasher/media/screenshot.png')
-
+![Gameplay Screenshot](media/screenshot.png)
